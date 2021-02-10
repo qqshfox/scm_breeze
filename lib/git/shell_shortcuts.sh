@@ -123,7 +123,7 @@ if [ "$shell_ls_aliases_enabled" = "true" ] && builtin command -v ruby > /dev/nu
       ll_output="$(CLICOLOR_FORCE=1 "${ll_command[@]}" -lG "$@")"
     fi
 
-    if [[ $shell == "zsh" ]]; then
+    if [[ $scm_breeze_shell == "zsh" ]]; then
       # Ensure sh_word_split is on
       [[ -o shwordsplit ]] && SHWORDSPLIT_ON=true
       setopt shwordsplit
@@ -222,7 +222,7 @@ EOF
     done
 
     # Turn off shwordsplit unless it was on previously
-    if [[ $shell == "zsh" && -z $SHWORDSPLIT_ON ]]; then unsetopt shwordsplit; fi
+    if [[ $scm_breeze_shell == "zsh" && -z $SHWORDSPLIT_ON ]]; then unsetopt shwordsplit; fi
   }
 
   # Setup aliases

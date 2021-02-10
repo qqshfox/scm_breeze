@@ -12,7 +12,7 @@
 # Cross-shell key bindings
 _bind(){
   if [ -n "$1" ]; then
-    if [[ $shell == "zsh" ]]; then
+    if [[ $scm_breeze_shell == "zsh" ]]; then
       bindkey -s "$1" "$2"
     else # bash
       bind "\"$1\": $2"
@@ -32,7 +32,7 @@ if [[ "$git_keyboard_shortcuts_enabled" = "true" ]]; then
 
       # Uses emacs style keybindings, so vi mode is not supported for now
       if ! set -o | grep -q '^vi .*on$'; then
-        if [[ $shell == "zsh" ]]; then
+        if [[ $scm_breeze_shell == "zsh" ]]; then
           _bind "$git_commit_all_keys"              " git_commit_all""$RETURN_CHAR"
           _bind "$git_add_and_commit_keys"          " \033[1~ git_add_and_commit ""$RETURN_CHAR"
           _bind "$git_commit_all_with_ci_skip_keys" " \033[1~ GIT_COMMIT_MSG_SUFFIX='[ci skip]' git_commit_all ""$RETURN_CHAR"

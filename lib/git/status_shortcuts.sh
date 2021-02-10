@@ -216,7 +216,7 @@ git_commit_prompt() {
     saved_commit_msg="$(cat /tmp/.git_commit_message~)"
     echo -e "\033[0;36mLeave blank to use saved commit message: \033[0m$saved_commit_msg"
   fi
-  if [[ $shell == "zsh" ]]; then
+  if [[ $scm_breeze_shell == "zsh" ]]; then
     vared -h -p "Commit Message: " commit_msg
   else
     read -r -e -p "Commit Message: " commit_msg
@@ -242,7 +242,7 @@ git_commit_prompt() {
   escaped_msg=$(echo "$commit_msg" | sed -e 's/"/\\"/g' -e "s/!/\"'!'\"/g")
   # Add command to bash history, so that if a git pre-commit hook fails,
   # you can just press "up" and "return" to retry the commit.
-  if [[ $shell == "zsh" ]]; then
+  if [[ $scm_breeze_shell == "zsh" ]]; then
     # zsh's print needs double escaping
     print -s "git commit -m \"${escaped_msg//\\/\\\\}\""
   else
@@ -259,7 +259,7 @@ git_commit_prompt() {
 
   # Fetch the pipe status (for both bash and zsh):
   GIT_PIPE_STATUS=("${PIPESTATUS[@]}${pipestatus[@]}")
-  if [[ $shell == "zsh" ]]; then
+  if [[ $scm_breeze_shell == "zsh" ]]; then
     git_exit_status="${GIT_PIPE_STATUS[2]}" # zsh array indexes start at 1
   else
     git_exit_status="${GIT_PIPE_STATUS[1]}"

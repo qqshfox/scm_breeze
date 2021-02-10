@@ -122,7 +122,7 @@ git_swap_remotes() {
   echo "Swapped $1 <-> $2"
 }
 # (use git fetch tab completion)
-if [ "$shell" = "bash" ]; then
+if [ "$scm_breeze_shell" = "bash" ]; then
   complete -o default -o nospace -F _git_fetch git_swap_remotes
 fi
 

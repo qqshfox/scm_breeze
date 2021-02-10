@@ -13,8 +13,8 @@ echo "== Will run all tests with following shells: ${TEST_SHELLS}"
 cd -P -- "${0%/*}"  # Change to directory this script lives in
 for test in $(find test/lib -name *_test.sh); do
   for shell in $TEST_SHELLS; do
-    echo "== Running tests with [$shell]: $test"
-    $shell $test || failed=true
+    echo "== Running tests with [$scm_breeze_shell]: $test"
+    $scm_breeze_shell $test || failed=true
   done
 done
 

@@ -10,7 +10,7 @@
 export scmbDir="$( cd -P "$( dirname "$0" )" && pwd )/../../.."
 
 # Zsh compatibility
-if [ -n "${ZSH_VERSION:-}" ]; then shell="zsh"; SHUNIT_PARENT=$0; setopt shwordsplit; fi
+if [ -n "${ZSH_VERSION:-}" ]; then scm_breeze_shell="zsh"; SHUNIT_PARENT=$0; setopt shwordsplit; fi
 
 # Load test helpers
 source "$scmbDir/test/support/test_helper.sh"
@@ -308,7 +308,7 @@ test_git_commit_prompt() {
   assertIncludes "$git_show_output"  "$commit_msg"
 
   # Test that history was appended correctly.
-  if [[ $shell == "zsh" ]]; then
+  if [[ $scm_breeze_shell == "zsh" ]]; then
     test_history="$(history)"
   else
     # Need to load history from $HISTFILE
@@ -342,7 +342,7 @@ test_git_commit_prompt_with_append() {
   assertIncludes "$git_show_output"  "$commit_msg \[ci skip\]"
 
   # Test that history was appended correctly.
-  if [[ $shell == "zsh" ]]; then
+  if [[ $scm_breeze_shell == "zsh" ]]; then
     test_history="$(history)"
   else
     test_history="$(cat $HISTFILE)"

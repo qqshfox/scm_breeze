@@ -11,7 +11,7 @@ export scmbDir="$( cd -P "$( dirname "$0" )" && pwd )/../../.."
 
 # Zsh compatibility
 if [ -n "${ZSH_VERSION:-}" ]; then
-  shell="zsh"; SHUNIT_PARENT=$0; setopt shwordsplit
+  scm_breeze_shell="zsh"; SHUNIT_PARENT=$0; setopt shwordsplit
 else
   # Bash needs this option so that 'alias' works in a non-interactive shell
   shopt -s expand_aliases
